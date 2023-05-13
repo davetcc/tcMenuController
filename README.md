@@ -6,7 +6,7 @@ You must not build an application called embedCONTROL, with any of the logos, or
 
 ### Support
 
-Obviously, this project allows you to build a very complex Xamarin UI that can be deployed to various App stores. However, as a general rule **no commerical support will be offered without a support contract**.
+This project allows you to build a very complex Xamarin UI that can be deployed to various App stores. As a general rule commerical support will be offered under a support contract. Use the tcMenu discussion forum for questions. 
 
 Please leave all test to here entact in any forks.
 
