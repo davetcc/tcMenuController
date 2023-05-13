@@ -1,5 +1,7 @@
 # embedCONTROL components for .NET
 
+TheCodersCorner.com invest a lot of time and resources into making this open source product which is used by literally thousands of users. We don't presently sell hardware or have any other income streams from it, we ask that especially commercial users consider making a voluntary contribution to help keep us going using the sponsor button.
+
 ## Limitations to use
 
 You must not build an application called embedCONTROL, with any of the logos, or any variation of that name that is deployed to an App Store or for public deployment, however you are free to build using any name that you own.
