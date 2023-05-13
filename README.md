@@ -1,4 +1,4 @@
-# embedCONTROL components for Microsoft .NET
+# embedCONTROL components for .NET
 
 ## Limitations to use
 
