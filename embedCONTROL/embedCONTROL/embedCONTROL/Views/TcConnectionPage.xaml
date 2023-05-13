@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="embedCONTROL.Views.TcConnectionPage"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Title="embedCONTROL connection" BackgroundColor="Transparent">
+
+    <ContentPage.Content>
+        <Grid RowSpacing="5" ColumnSpacing="5" Padding="10" x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="DialogStack" Padding="4" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                         Orientation="Vertical" BackgroundColor="LightBlue" IsVisible="False">
+                <Label FontSize="18" Text="Dialog Title" x:Name="DialogTitle"/>
+                <Label FontSize="14" Text="Dialog text blah blah" x:Name="DialogText"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" BackgroundColor="DarkBlue" TextColor="White" Text="Close" 
+                            x:Name="DialogButton1" Clicked="DialogButton1_OnClicked"/>
+                    <Button Grid.Column="1" BackgroundColor="DarkBlue" TextColor="White" Text="Close" 
+                            x:Name="DialogButton2" Clicked="DialogButton2_OnClicked"/>
+                </Grid>
+            </StackLayout>
+            <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="ItemLayoutArea">
+            </ScrollView>
+            <Label Grid.Row="2" Grid.Column="0" Text="Connection Status:"/>
+            <Label Grid.Row="2" Grid.Column="1" x:Name="ConnectionStatus"/>
+            <Label Grid.Row="3" Grid.Column="0" Text="Remote Device:" />
+            <Label Grid.Row="3" Grid.Column="1" x:Name="RemoteDeviceInfo"/>
+            <Label Grid.Row="4" Grid.Column="0" Text="Address:"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding Connection.Controller.Connector.ConnectionName, Mode=OneTime}"/>
+            <StackLayout Grid.Row="2" Grid.Column="2" Grid.RowSpan="3" Spacing="4" Margin="5" Orientation="Vertical">
+                <Button x:Name="EditConnectionBtn"  Clicked="EditConnectionBtn_Click" Text="Refresh"/>
+                <Button x:Name="RemoveConnectionBtn"  Clicked="RemoveConnectionBtn_Click" Text="Remove"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

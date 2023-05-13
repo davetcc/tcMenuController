@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:embedCONTROL.Views;assembly=embedCONTROL"
+             x:Class="embedCONTROL.Views.GlobalSettingsDetail"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=LocalSettings}"
+             Title="Global Settings" BackgroundColor="Transparent">
+
+    <ScrollView HorizontalScrollBarVisibility="Never">
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Local Device Identification"
+                   FontAttributes="Bold" />
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Local Name" />
+            <Entry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding LocalName, Mode=TwoWay}" />
+            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Local UUID" />
+            <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="UUIDTextField" Text="{Binding UniqueId}" />
+            <Button Grid.Row="4" Grid.Column="2" Text="Change UUID" Clicked="UUIDButton_Clicked" />
+
+            <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Text="Global Color Scheme" />
+
+            <views:FormsFgBgColorPicker Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Update" x:Name="UpdateColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Pending" x:Name="PendingColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Text" x:Name="TextColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Button" x:Name="ButtonColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Error" x:Name="ErrorColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Highlight" x:Name="HighlightColorPicker" />
+            <views:FormsFgBgColorPicker Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3"
+                                        FieldName="Dialog" x:Name="DialogColorPicker" />
+
+            <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="3" Text="Reset Colors To Default" Clicked="ResetColorsToDefault" />
+
+            <Label Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Text="Default of columns" />
+            <Entry Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" x:Name="DefaultColumnsField" />
+
+            <Button Grid.Row="16" Grid.Column="0" Text="Save" x:Name="SaveButton" Clicked="SaveButton_Clicked" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
