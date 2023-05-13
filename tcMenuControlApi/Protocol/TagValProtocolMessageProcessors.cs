@@ -168,7 +168,8 @@ namespace tcMenuControlApi.Protocol
                 .WithDivisor(textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_ANALOG_DIV))
                 .WithMaxValue(textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_ANALOG_MAX))
                 .WithOffset(textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_ANALOG_OFF))
-                .WithUnitName(textParser.GetValueForKey(FieldKeyPairs.FIELD_ANALOG_UNIT));
+                .WithUnitName(textParser.GetValueForKey(FieldKeyPairs.FIELD_ANALOG_UNIT))
+                .WithStep(textParser.GetValueForKeyAsIntWithDefault(FieldKeyPairs.FIELD_ANALOG_STEP, 1));
 
             int parent = ReadBootItemBasicsAndSub(textParser, itemBuilder);
             int currentValue = textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_CURRENT_VAL);

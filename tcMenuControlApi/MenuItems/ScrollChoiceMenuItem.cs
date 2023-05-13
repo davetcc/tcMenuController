@@ -19,7 +19,8 @@ namespace tcMenuControlApi.MenuItems
 
         public ScrollChoiceMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, 
             bool localOnly, bool visible, int entries, int itemWidth, int eepromOffset, string ramVariable,
-            ScrollChoiceMode mode) : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+            ScrollChoiceMode mode, bool staticInRam) 
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             NumEntries = entries;
             ItemWidth = itemWidth;
@@ -116,7 +117,7 @@ namespace tcMenuControlApi.MenuItems
         public override ScrollChoiceMenuItem Build()
         {
             return new ScrollChoiceMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, _numEntries,
-                                            _itemWidth, _eepromOffset, _ramVariable, _choiceMode);
+                                            _itemWidth, _eepromOffset, _ramVariable, _choiceMode, StaticInRam);
         }
 
         protected override ScrollChoiceMenuItemBuilder GetThis()

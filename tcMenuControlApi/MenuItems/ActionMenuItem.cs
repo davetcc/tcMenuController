@@ -9,8 +9,8 @@ namespace tcMenuControlApi.MenuItems
     /// </summary>
     public class ActionMenuItem : MenuItem
     {
-        public ActionMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+        public ActionMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
         }
 
@@ -42,7 +42,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override ActionMenuItem Build()
         {
-            return new ActionMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible);
+            return new ActionMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, StaticInRam);
         }
     }
 }

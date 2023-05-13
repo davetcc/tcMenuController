@@ -12,8 +12,8 @@ namespace tcMenuControlApi.MenuItems
         public List<string> EnumEntries { get; }
 
         public EnumMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, 
-                            bool visible, List<string> entries)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+                            bool visible, List<string> entries, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             EnumEntries = entries;
         }
@@ -110,7 +110,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override EnumMenuItem Build()
         {
-            return new EnumMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, EntryList);
+            return new EnumMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, EntryList, StaticInRam);
         }
     }
 }

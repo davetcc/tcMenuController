@@ -11,8 +11,8 @@ namespace tcMenuControlApi.MenuItems
     {
         public bool Secured { get; }
 
-        public SubMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool secured, bool visible)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+        public SubMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool secured, bool visible, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             Secured = secured;
         }
@@ -80,7 +80,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override SubMenuItem Build()
         {
-            return new SubMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, _secured, Visible);
+            return new SubMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, _secured, Visible, StaticInRam);
         }
     }
 }

@@ -10,10 +10,12 @@ namespace tcMenuControlApi.MenuItems
     public class RuntimeListMenuItem : MenuItem
     {
         public int InitialRows { get; }
+        public bool UsingInfoBlock { get; }
 
-        public RuntimeListMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, int rows)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+        public RuntimeListMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, int rows, bool usingInfo, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
+            UsingInfoBlock = usingInfo;
             InitialRows = rows;
         }
 
@@ -45,6 +47,7 @@ namespace tcMenuControlApi.MenuItems
     public class RuntimeListMenuItemBuilder : MenuItemBuilder<RuntimeListMenuItemBuilder, RuntimeListMenuItem>
     {
         private int InitialRows;
+        private bool UsingInfoBlock;
 
         protected override RuntimeListMenuItemBuilder GetThis()
         {
@@ -68,9 +71,15 @@ namespace tcMenuControlApi.MenuItems
             return this;
         }
 
+        public RuntimeListMenuItemBuilder WithUsingInfoBlock(bool usingInfo)
+        {
+            UsingInfoBlock = usingInfo;
+            return this;
+        }
+
         public override RuntimeListMenuItem Build()
         {
-            return new RuntimeListMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, InitialRows);
+            return new RuntimeListMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, InitialRows, UsingInfoBlock, StaticInRam);
         }
     }
 }

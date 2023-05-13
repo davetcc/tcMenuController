@@ -20,8 +20,8 @@ namespace tcMenuControlApi.MenuItems
         public int TextLength { get; }
 
         public EditableTextMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, 
-                                    EditItemType editType, int textLen)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+                                    EditItemType editType, int textLen, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             EditType = editType;
             TextLength = textLen;
@@ -101,7 +101,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override EditableTextMenuItem Build()
         {
-            return new EditableTextMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, EditType, TextLength);
+            return new EditableTextMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, EditType, TextLength, StaticInRam);
         }
     }
 }

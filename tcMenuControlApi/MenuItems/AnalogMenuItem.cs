@@ -15,15 +15,17 @@ namespace tcMenuControlApi.MenuItems
         public int Offset { get; }
         public int Divisor { get; }
         public string UnitName { get; }
+        public int Step { get; }
 
         public AnalogMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible,
-                              int maxValue, int offset, int divisor, string unit) 
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+                              int maxValue, int offset, int divisor, int step, string unit, bool staticInRam) 
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             MaximumValue = maxValue;
             Divisor = divisor;
             Offset = offset;
             UnitName = unit;
+            Step = step;
         }
 
         public override void Accept(MenuItemVisitor visitor)
@@ -58,6 +60,7 @@ namespace tcMenuControlApi.MenuItems
         private int Offset;
         private int Divisor;
         private string UnitName;
+        private int Step;
 
         /// <summary>
         /// Sets the maximum value for the item
@@ -67,6 +70,17 @@ namespace tcMenuControlApi.MenuItems
         public AnalogMenuItemBuilder WithMaxValue(int max)
         {
             MaxValue = max;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the step for this analog item
+        /// </summary>
+        /// <param name="step">the new step value</param>
+        /// <returns>itself</returns>
+        public AnalogMenuItemBuilder WithStep(int step)
+        {
+            Step = step;
             return this;
         }
 
@@ -119,7 +133,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override AnalogMenuItem Build()
         {
-            return new AnalogMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, MaxValue, Offset, Divisor, UnitName);
+            return new AnalogMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, MaxValue, Offset, Divisor, Step, UnitName, StaticInRam);
         }
     }
 }

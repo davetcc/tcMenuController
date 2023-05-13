@@ -23,6 +23,7 @@ namespace tcMenuControlApi.Protocol
         public static readonly ushort FIELD_ANALOG_OFF  = MenuCommand.MakeCmdPair('A', 'O');
         public static readonly ushort FIELD_ANALOG_DIV  = MenuCommand.MakeCmdPair('A', 'D');
         public static readonly ushort FIELD_ANALOG_UNIT = MenuCommand.MakeCmdPair('A', 'U');
+        public static readonly ushort FIELD_ANALOG_STEP = MenuCommand.MakeCmdPair('A', 'S');
         public static readonly ushort FIELD_CURRENT_VAL = MenuCommand.MakeCmdPair('V', 'C');
         public static readonly ushort FIELD_WIDTH       = MenuCommand.MakeCmdPair('W', 'I');
         public static readonly ushort FIELD_BOOL_NAMING = MenuCommand.MakeCmdPair('B', 'N');

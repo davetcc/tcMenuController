@@ -13,8 +13,8 @@ namespace tcMenuControlApi.MenuItems
         public int DecimalPlaces { get; }
 
         public FloatMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, 
-                            int decPlaces)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+                            int decPlaces, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             DecimalPlaces = decPlaces;
         }
@@ -78,7 +78,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override FloatMenuItem Build()
         {
-            return new FloatMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, DecimalPlaces);
+            return new FloatMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, DecimalPlaces, StaticInRam);
         }
     }
 }

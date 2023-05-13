@@ -12,8 +12,8 @@ namespace tcMenuControlApi.MenuItems
         public bool IncludeAlphaChannel { get; }
 
         public Rgb32MenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly,
-            bool visible, bool includeAlpha) 
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+            bool visible, bool includeAlpha, bool staticInRam) 
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             IncludeAlphaChannel = includeAlpha;
         }
@@ -58,7 +58,7 @@ namespace tcMenuControlApi.MenuItems
         public override Rgb32MenuItem Build()
         {
             return new Rgb32MenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible,
-                _includeAlpha);
+                _includeAlpha, StaticInRam);
         }
 
         protected override Rgb32MenuItemBuilder GetThis()

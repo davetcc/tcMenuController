@@ -18,7 +18,7 @@ namespace tcMenuControlApi.MenuItems
         /// <summary>
         /// The root item used when requiring access to the top level
         /// </summary>
-        public static readonly SubMenuItem ROOT = new SubMenuItem("ROOT", "ROOT", 0, -1, null, false, false, false, true);
+        public static readonly SubMenuItem ROOT = new SubMenuItem("ROOT", "ROOT", 0, -1, null, false, false, false, true, false);
         private readonly Dictionary<SubMenuItem, List<MenuItem>> _menusBySubMenu = new Dictionary<SubMenuItem, List<MenuItem>>();
         private readonly ConcurrentDictionary<int, AnyMenuState> _stateById = new ConcurrentDictionary<int, AnyMenuState>();
 

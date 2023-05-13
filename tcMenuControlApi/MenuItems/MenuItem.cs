@@ -18,9 +18,10 @@ namespace tcMenuControlApi.MenuItems
         public bool ReadOnly { get; }
         public bool LocalOnly { get; }
         public bool Visible { get; }
+        public bool StaticInRAM { get; }
 
-        public MenuItem(string name, string variableName, int id, int eepromAddress, string functionName,
-                        bool readOnly, bool localOnly, bool visible)
+        protected MenuItem(string name, string variableName, int id, int eepromAddress, string functionName,
+                        bool readOnly, bool localOnly, bool visible, bool staticInRAM)
         {
             Name = name;
             VariableName = variableName;
@@ -30,13 +31,14 @@ namespace tcMenuControlApi.MenuItems
             ReadOnly = readOnly;
             LocalOnly = localOnly;
             Visible = visible;
+            StaticInRAM = staticInRAM;
         }
 
         /// <summary>
         /// Indicates if the item has children or not
         /// </summary>
         /// <returns></returns>
-        virtual public bool HasChildren()
+        public virtual bool HasChildren()
         {
             return false;
         }
@@ -59,7 +61,8 @@ namespace tcMenuControlApi.MenuItems
                    FunctionName == item.FunctionName &&
                    ReadOnly == item.ReadOnly &&
                    Visible == item.Visible &&
-                   LocalOnly == item.LocalOnly;
+                   LocalOnly == item.LocalOnly &&
+                   StaticInRAM == item.StaticInRAM;
         }
 
         public override int GetHashCode()
@@ -73,6 +76,7 @@ namespace tcMenuControlApi.MenuItems
             hashCode = hashCode * -1521134295 + ReadOnly.GetHashCode();
             hashCode = hashCode * -1521134295 + Visible.GetHashCode();
             hashCode = hashCode * -1521134295 + LocalOnly.GetHashCode();
+            hashCode = hashCode * -1521134295 + StaticInRAM.GetHashCode();
             return hashCode;
         }
     }
@@ -91,14 +95,15 @@ namespace tcMenuControlApi.MenuItems
         protected bool ReadOnly;
         protected bool LocalOnly;
         protected bool Visible = true;
+        protected bool StaticInRam = false;
 
         /// <summary>
         /// Override in the leaf to return the appropriate class - better than casting.
         /// </summary>
         /// <returns></returns>
-        abstract protected T GetThis();
+        protected abstract T GetThis();
 
-        abstract public B Build();
+        public abstract B Build();
 
         /// <summary>
         /// Set the name for a given menu item
@@ -190,6 +195,18 @@ namespace tcMenuControlApi.MenuItems
         }
 
         /// <summary>
+        /// Used mainly in the designer but copied for completeness, signifies that the static data for the item is
+        /// stored in RAM instead of FLASH.
+        /// </summary>
+        /// <param name="staticInRam"></param>
+        /// <returns>true when static in RAM, otherwise false</returns>
+        public T WithStaticInRam(bool staticInRam)
+        {
+            StaticInRam = staticInRam;
+            return GetThis();
+        }
+
+        /// <summary>
         /// Copies all the fields from the supplied menu item into the builder.
         /// This will always be a deep copy.
         /// </summary>
@@ -205,6 +222,7 @@ namespace tcMenuControlApi.MenuItems
             ReadOnly = menuItem.ReadOnly;
             LocalOnly = menuItem.LocalOnly;
             Visible = menuItem.Visible;
+            StaticInRam = menuItem.StaticInRAM;
             return GetThis();
         }
     }

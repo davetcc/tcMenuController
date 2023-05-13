@@ -6,7 +6,7 @@ namespace tcMenuControlApi.MenuItems
 {
     public enum BooleanNaming
     {
-        TRUE_FALSE = 0, ON_OFF = 1, YES_NO = 2
+        TRUE_FALSE = 0, ON_OFF = 1, YES_NO = 2, CHECKBOX = 3
     }
 
     /// <summary>
@@ -17,8 +17,8 @@ namespace tcMenuControlApi.MenuItems
     {
         public BooleanNaming Naming { get; }
 
-        public BooleanMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, BooleanNaming naming)
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+        public BooleanMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, BooleanNaming naming, bool staticInRam)
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             Naming = naming;
         }
@@ -78,7 +78,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override BooleanMenuItem Build()
         {
-            return new BooleanMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, Naming);
+            return new BooleanMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, Naming, StaticInRam);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace tcMenuControlApi.MenuItems
         public bool AllowNegative { get; }
 
         public LargeNumberMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible,
-                                   int decimalPlaces, int totalDigits, bool allowNegative) 
-            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible)
+                                   int decimalPlaces, int totalDigits, bool allowNegative, bool staticInRam) 
+            : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
             DecimalPlaces = decimalPlaces;
             TotalDigits = totalDigits;
@@ -80,7 +80,7 @@ namespace tcMenuControlApi.MenuItems
 
         public override LargeNumberMenuItem Build()
         {
-            return new LargeNumberMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, _decimalPlaces, _totalDigits, _allowNegative);
+            return new LargeNumberMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, _decimalPlaces, _totalDigits, _allowNegative, StaticInRam);
         }
 
         protected override LargeNumberMenuItemBuilder GetThis()
