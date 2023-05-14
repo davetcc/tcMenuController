@@ -4,18 +4,24 @@ using System.Text;
 
 namespace tcMenuControlApi.MenuItems
 {
+    public enum ListCreationMode
+    {
+        CustomRtCall, RamArray, FlashArray
+    }
+
     /// <summary>
     /// A menu item that purely represents a function that can be run on the embedded device. It holds no state of its own.
     /// </summary>
     public class RuntimeListMenuItem : MenuItem
     {
         public int InitialRows { get; }
-        public bool UsingInfoBlock { get; }
+        public ListCreationMode CreationMode { get; }
 
-        public RuntimeListMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, int rows, bool usingInfo, bool staticInRam)
+        public RuntimeListMenuItem(string name, string varName, int id, int eepromAddress, string functionName, bool readOnly, bool localOnly, bool visible, int rows, 
+                                   ListCreationMode creationMode, bool staticInRam)
             : base(name, varName, id, eepromAddress, functionName, readOnly, localOnly, visible, staticInRam)
         {
-            UsingInfoBlock = usingInfo;
+            CreationMode = creationMode;
             InitialRows = rows;
         }
 
@@ -46,8 +52,8 @@ namespace tcMenuControlApi.MenuItems
     /// </summary>
     public class RuntimeListMenuItemBuilder : MenuItemBuilder<RuntimeListMenuItemBuilder, RuntimeListMenuItem>
     {
-        private int InitialRows;
-        private bool UsingInfoBlock;
+        private int _initialRows;
+        private ListCreationMode _creationMode;
 
         protected override RuntimeListMenuItemBuilder GetThis()
         {
@@ -61,25 +67,27 @@ namespace tcMenuControlApi.MenuItems
         /// <returns>itself for chaining</returns>
         public override RuntimeListMenuItemBuilder WithExisting(RuntimeListMenuItem item)
         {
-            InitialRows = item.InitialRows;
+            _creationMode = item.CreationMode;
+            _initialRows = item.InitialRows;
             return base.WithExisting(item);
         }
 
         public RuntimeListMenuItemBuilder WithInitialRows(int rows)
         {
-            InitialRows = rows;
+            _initialRows = rows;
             return this;
         }
 
-        public RuntimeListMenuItemBuilder WithUsingInfoBlock(bool usingInfo)
+        public RuntimeListMenuItemBuilder WithCreationMode(ListCreationMode creationMode)
         {
-            UsingInfoBlock = usingInfo;
+            _creationMode = creationMode;
             return this;
         }
 
         public override RuntimeListMenuItem Build()
         {
-            return new RuntimeListMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, InitialRows, UsingInfoBlock, StaticInRam);
+            return new RuntimeListMenuItem(Name, VariableName, Id, EepromAddress, FunctionName, ReadOnly, LocalOnly, Visible, 
+                _initialRows, _creationMode, StaticInRam);
         }
     }
 }

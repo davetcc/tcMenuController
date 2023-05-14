@@ -123,6 +123,7 @@ namespace tcMenuControlApi.MenuItems
             Offset = item.Offset;
             Divisor = item.Divisor;
             UnitName = item.UnitName;
+            Step = item.Step;
             return base.WithExisting(item);
         }
 

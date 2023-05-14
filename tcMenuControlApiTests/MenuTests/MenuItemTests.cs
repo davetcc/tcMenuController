@@ -165,12 +165,14 @@ namespace tcMenuControlApiTests.MenuTests
                 .WithLocalOnly(true)
                 .WithReadOnly(true)
                 .WithInitialRows(2)
+                .WithCreationMode(ListCreationMode.FlashArray)
                 .Build();
 
             Assert.AreEqual("RunList", item.Name);
             Assert.AreEqual(1, item.Id);
             Assert.AreEqual(-1, item.EepromAddress);
             Assert.AreEqual("RuntimeListFn", item.FunctionName);
+            Assert.AreEqual(ListCreationMode.FlashArray, item.CreationMode);
             Assert.IsTrue(item.ReadOnly);
             Assert.IsTrue(item.LocalOnly);
             Assert.AreEqual(2, item.InitialRows);
@@ -232,6 +234,7 @@ namespace tcMenuControlApiTests.MenuTests
                 .WithDivisor(10)
                 .WithMaxValue(250)
                 .WithOffset(-100)
+                .WithStep(2)
                 .WithUnitName("AB")
                 .Build();
 
@@ -239,6 +242,7 @@ namespace tcMenuControlApiTests.MenuTests
             Assert.AreEqual(103, item.Id);
             Assert.AreEqual(1000, item.EepromAddress);
             Assert.AreEqual("Function", item.FunctionName);
+            Assert.AreEqual(2, item.Step);
             Assert.IsFalse(item.ReadOnly);
             Assert.IsTrue(item.LocalOnly);
             Assert.AreEqual(10, item.Divisor);
