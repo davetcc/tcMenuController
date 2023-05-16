@@ -39,7 +39,7 @@ namespace tcMenuControlApi.SocketRemote
             }
             else if(command is NewJoinerCommand nj)
             {
-                RemoteInformation ri = new RemoteInformation(nj.Name, nj.ApiVersion, nj.ApiPlatform, nj.Uuid);
+                RemoteInformation ri = new RemoteInformation(nj.Name, nj.ApiVersion, nj.ApiPlatform, nj.Uuid, nj.SerialNumber);
                 Context.SetRemoteParty(ri);
                 Context.ChangeState(AuthenticationStatus.SEND_JOIN);
             }

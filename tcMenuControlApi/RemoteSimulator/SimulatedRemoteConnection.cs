@@ -45,7 +45,7 @@ namespace tcMenuControlApi.RemoteSimulator
             _simName = simName;
             _latencyMillis = latencyMillis;
             _valuesById = valuesById;
-            RemoteInfo = new RemoteInformation(_simName, 101, ApiPlatform.DNET_API, _uuid);
+            RemoteInfo = new RemoteInformation(_simName, 101, ApiPlatform.DNET_API, _uuid, 123456);
             var simulatorMenu = new SubMenuItemBuilder()
                 .WithId(60001)
                 .WithName("Simulator Options")
