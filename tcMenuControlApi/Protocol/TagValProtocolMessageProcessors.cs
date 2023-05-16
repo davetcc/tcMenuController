@@ -98,6 +98,7 @@ namespace tcMenuControlApi.Protocol
             {
                 WriteField(stream, FieldKeyPairs.FIELD_MSG_NAME, cmd.Name);
                 WriteField(stream, FieldKeyPairs.FIELD_UUID, cmd.Uuid);
+                WriteField(stream, FieldKeyPairs.FIELD_SERIAL_NO, cmd.SerialNumber);
                 WriteField(stream, FieldKeyPairs.FIELD_VERSION, cmd.ApiVersion);
                 WriteField(stream, FieldKeyPairs.FIELD_PLATFORM, (byte)cmd.ApiPlatform);
             }
@@ -110,7 +111,8 @@ namespace tcMenuControlApi.Protocol
                 textParser.GetValueForKey(FieldKeyPairs.FIELD_MSG_NAME),
                 textParser.GetValueForKey(FieldKeyPairs.FIELD_UUID),
                 (ushort)textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_VERSION),
-                (ApiPlatform)textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_PLATFORM)
+                (ApiPlatform)textParser.GetValueForKeyAsInt(FieldKeyPairs.FIELD_PLATFORM),
+                textParser.GetValueForKeyAsIntWithDefault(FieldKeyPairs.FIELD_SERIAL_NO, 0)
             );
         }
 

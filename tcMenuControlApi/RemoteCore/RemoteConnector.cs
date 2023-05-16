@@ -12,6 +12,7 @@ namespace tcMenuControlApi.RemoteCore
 {
     public abstract class RemoteConnectorBase : IRemoteConnector, IRemoteConnectorContext
     {
+        private const int UI_DEF_SERIAL = 0;
         private const int API_VERSION = 103;
         private const int BUFFER_SIZE = 1024;
         public const int TICK_INTERVAL_MILLIS = 500;
@@ -287,10 +288,9 @@ namespace tcMenuControlApi.RemoteCore
 
         public void SendJoinCommand()
         {
-            SendMenuCommand(new NewJoinerCommand(_localId.Name, _localId.Uuid.ToString(), API_VERSION, ApiPlatform.DNET_API));
+            SendMenuCommand(new NewJoinerCommand(_localId.Name, _localId.Uuid.ToString(), API_VERSION, ApiPlatform.DNET_API, UI_DEF_SERIAL));
         }
 
-        
         /// <summary>
         /// Implemented by the actual conector device to close the underlying connection
         /// </summary>

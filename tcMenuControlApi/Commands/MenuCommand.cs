@@ -93,6 +93,10 @@ namespace tcMenuControlApi.Commands
         /// </summary>
         public string Uuid { get; }
         /// <summary>
+        /// The serial number of the board
+        /// </summary>
+        public int SerialNumber { get; }
+        /// <summary>
         /// API version for this connection
         /// </summary>
         public ushort ApiVersion { get; }
@@ -108,17 +112,19 @@ namespace tcMenuControlApi.Commands
         /// <param name="uuid">uuid for the connection</param>
         /// <param name="version">version of the connection</param>
         /// <param name="platform">platform for the connection</param>
-        public NewJoinerCommand(string name, string uuid, ushort version, ApiPlatform platform) : base(NEW_JOINER_CMD_ID)
+        /// <param name="serialNumber">the serial number for the connection</param>
+        public NewJoinerCommand(string name, string uuid, ushort version, ApiPlatform platform, int serialNumber) : base(NEW_JOINER_CMD_ID)
         {
             Name = name;
             Uuid = uuid;
             ApiVersion = version;
             ApiPlatform = platform;
+            SerialNumber = serialNumber;
         }
 
         public override string ToString()
         {
-            return $"NewJoiner[Name={Name}, Uuid={Uuid}, ApiVer={ApiVersion}, ApiPlatform={ApiPlatform}]";
+            return $"NewJoiner[Name={Name}, Uuid={Uuid} (S/N={SerialNumber}), ApiVer={ApiVersion}, ApiPlatform={ApiPlatform}]";
         }
     }
 

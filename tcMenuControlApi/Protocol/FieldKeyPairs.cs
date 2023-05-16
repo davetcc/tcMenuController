@@ -34,6 +34,7 @@ namespace tcMenuControlApi.Protocol
         public static readonly ushort FIELD_FLOAT_DP    = MenuCommand.MakeCmdPair('F', 'D');
         public static readonly ushort FIELD_ALLOW_NEG   = MenuCommand.MakeCmdPair('N', 'A');
         public static readonly ushort FIELD_UUID        = MenuCommand.MakeCmdPair('U', 'U');
+        public static readonly ushort FIELD_SERIAL_NO   = MenuCommand.MakeCmdPair('U', 'S');
         public static readonly ushort FIELD_CORRELATION = MenuCommand.MakeCmdPair('I', 'C');
         public static readonly ushort FIELD_ACK_STATUS  = MenuCommand.MakeCmdPair('S', 'T');
         public static readonly ushort FIELD_HEADER      = MenuCommand.MakeCmdPair('H', 'F');
